@@ -36,3 +36,6 @@
 *.log
 *.lastbuildstate
 *.opendb
+
+#VS
+.suo
