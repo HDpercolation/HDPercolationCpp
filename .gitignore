@@ -3,6 +3,7 @@
 *.lo
 *.o
 *.obj
+*.iobj
 *.sdf
 *.pdb
 *.ipdb
@@ -34,3 +35,4 @@
 *.tlog
 *.log
 *.lastbuildstate
+*.opendb
