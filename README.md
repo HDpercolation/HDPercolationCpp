@@ -1,9 +1,12 @@
 # HDPercolationCpp
+
+[![CC BY-NC-ND](https://raw.githubusercontent.com/HDpercolation/HDPercolationCpp/master/images/BYNCND.png)](http://creativecommons.org/licenses/by-nc-nd/4.0/)
+
 High dimension percolation in C++
 
 ##Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)
 
-> *from*: http://creativecommons.org/licenses/by-nc-nd/4.0/
+> Ref: http://creativecommons.org/licenses/by-nc-nd/4.0/
 
 ###You are free to:
 
@@ -24,4 +27,4 @@ The licensor cannot revoke these freedoms as long as you follow the license term
 
 ###Notices:
 You do not have to comply with the license for elements of the material in the public domain or where your use is permitted by an applicable [exception or limitation](https://creativecommons.org/licenses/by-nc-nd/4.0/#).
-No warranties are given. The license may not give you all of the permissions necessary for your intended use. For example, other rights such as [publicity, privacy, or moral rights](https://creativecommons.org/licenses/by-nc-nd/4.0/#) may limit how you use the material. 
+No warranties are given. The license may not give you all of the permissions necessary for your intended use. For example, other rights such as [publicity, privacy, or moral rights](https://creativecommons.org/licenses/by-nc-nd/4.0/#) may limit how you use the material.
