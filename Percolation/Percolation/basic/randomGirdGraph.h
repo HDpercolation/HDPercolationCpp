@@ -112,7 +112,6 @@ namespace BondPercolation {
 	* 返回值：     连边点编号
 	* 测试：      已测试
 	*/
-	Template long linked_index(GRAPH *, long, int);
 	Template long linked_index2(GRAPH *, long, int);
 
 	Template long get_index(GRAPH *, _position *);// 获得点编号
@@ -133,7 +132,6 @@ namespace BondPercolation {
 	// 随机设置连边
 	void get_position_q(long, long, long, _position *);
 	// 获得坐标
-	///inline int putLink(GRAPH *, const long&, const int&, const double&);// 放置无向边
 	Template inline int putLink(GRAPH *, long, int, double);// 放置无向边
 	inline int putLink_p(GRAPH *, std::vector<_node_x>::iterator, std::size_t, int, double);
 	// BFS ========================================================================
@@ -184,13 +182,10 @@ namespace BondPercolation {
 	Template
 	int inital_set_bond(GRAPH *g, unsigned int $d, unsigned int $m, double p) {
 		long count_link = 0;
-		///std::vector<_node_x>::iterator point = g->$map.begin();
 		std::bernoulli_distribution RandomRange(p);
 		
-		//cout << "SET BOND" << endl;
 		long max = POWER($m, $d);
 		for (long i = 0; i < max; ++i) {
-			//cout << "SET NO " << i << "." << endl;
 			// TODO 此处可用泊松分布 + 位运算优化之
 			for (int j = 0; j < $d; ++j) {
 				if (random_MTE() < g->p_int) {
@@ -210,22 +205,18 @@ namespace BondPercolation {
 	}
 
 	void get_position_q(long index, long d, long m, _position *p) {
-		//_position temp_p(d, 0);
 		auto $index = index;
 		int k = d - 1;
 
 		// (*p)[0]是最高位
-		///while ($index >= 0 && k >= 0) {
 		while (k >= 0) {
 			(*p)[k] = $index % m;
 			$index = $index / m;
 
 			k--;
 		}
-		///swap(temp_p, (*p));
 	}
 
-	//inline int putLink(GRAPH *g, const long &index, const int &link, const double &p) {
 	Template
 	inline int putLink(GRAPH *g, long index, int link, double p) {
 		/* ===================================================
@@ -255,7 +246,6 @@ namespace BondPercolation {
 		if (randomer.getNum() < g->p_int) {
 			(*point).links[link] = true;
 			// 添加一个反向边
-			///_position p_now = get_position(index, g->d, g->m);
 			_position p_now(g->d, 0);
 			get_position_q(index, g->d, g->m, &p_now);
 
@@ -279,7 +269,6 @@ namespace BondPercolation {
 		long groups = 1;
 		// 染色编号
 		long group_size = 0;
-		///long g_size = g->$map.size();
 		std::size_t g_size = g->size;
 
 		for (long pointIndex = 0; pointIndex < g_size; ++pointIndex) {
@@ -300,8 +289,6 @@ namespace BondPercolation {
 		* 返回：簇规模
 		* ================================
 		*/
-		//vector<g_size_t> now_points = {}; // 当前访问的节点 
-		//vector<g_size_t> temp_points = {}; // 待下一步访问的节点
 		deque<g_size_t> go_lists;
 
 		_move temp_move(g->d + 1, 0); // 最后一个数值用以存储颜色
@@ -316,7 +303,6 @@ namespace BondPercolation {
 		// =========================================================================================================
 
 		// 将当前点设为初始点：
-		//now_points.push_back(index);
 		go_lists.push_back(index);
 
 		g->$map[index].visited = true;
@@ -329,41 +315,12 @@ namespace BondPercolation {
 		}
 
 		// 从此点开始进行BFS，进行染色、标记
-		while (! go_lists.empty()/*now_points.empty()*/) {
+		while (! go_lists.empty()) {
 			// 标记、染色：
 
 			g->$map[*go_lists.begin()].color = $color;
 
 			visit_points3(g, &go_lists, $color, &reported_a_wrappingQ);
-
-			/*
-			for (long i = 0; i < now_points.size(); ++i) {
-				g->$map[now_points[i]].color = $color;
-			}
-
-			// 加入这一轮的
-
-			// 加入新的待访问节点：
-			temp_points.clear();
-			vector<g_size_t> temp_going_to_visit;
-			for (long i = 0; i < now_points.size(); ++i) {
-				///temp_going_to_visit = visit_points2(g, now_points[i]);
-				visit_points2(g, now_points[i], &temp_points, $color, &reported_a_wrappingQ);
-				///temp_points.insert(temp_points.end(), temp_going_to_visit.begin(), temp_going_to_visit.end());
-			}
-
-			// 更新堆栈：
-			now_points.clear();
-			swap(now_points, temp_points);
-
-			// 清空map
-			g->$map[index].move.clear();
-			///ClearVector(&(g->$map[index].move));
-
-			// 计算规模：
-			size += temp_points.size();
-			deep++;
-			*/
 		}
 		
 		return size;
@@ -460,26 +417,6 @@ namespace BondPercolation {
 		return false;
 	}
 
-
-	Template
-	inline long linked_index(GRAPH *g, long index, int link) {
-		///_position p = get_position(index, g->d, g->m);
-		_position p(g->d, 0);
-		get_position_q(index, g->d, g->m, &p);
-
-		if (link < g->d) {
-			p[link] = (p[link] + 1) % g->m;
-		}
-		else {
-			p[link - g->d]--;
-			if (p[link - g->d] < 0) {
-				p[link - g->d] = g->m - 1;
-			}
-		}
-
-		return GET_INDEX(g, &p);
-	}
-
 	Template
 	inline long linked_index2(GRAPH *g, long index, int bond_id) {
 		long exp_1, exp_2, low_part, change_part, high_part;
@@ -509,13 +446,11 @@ namespace BondPercolation {
 		if (bond_id < g->d) {
 			// 若为增加之方向
 			change_part++;
-			///change_part %= g->m;
 			change_part = change_part % g->m;
 		}
 		else {
 			// 若为减少之方向
 			change_part--;
-			///change_part %= g->m;
 			change_part = change_part % g->m;
 		}
 
@@ -527,7 +462,6 @@ namespace BondPercolation {
 		long result = 0;
 		for (int i = 0; i < (*p).size(); ++i) {
 			result += (*p)[i] * POWER(g->m, g->d - i - 1);
-			///result += (*p)[i] * (g->shift[i]);
 		}
 
 		return result;
