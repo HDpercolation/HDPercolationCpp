@@ -152,6 +152,14 @@ void run_for_n_times(int d, int m, double p, long n){
     return;
 }
 
+void runRangeForNTimes(double rng_a, double rng_b, double dx, double $d, double $m, long n)
+/*rng_a, rng_b为计算的p的范围，dx为步长，$d, $m, p为维度、宽度, n是每个点计算的次数*/
+{
+	/*构造网格*/
+
+	/*循环计算每个点*/
+}
+
 int main(int argc, char *argv[]) {
 
     int			d;
