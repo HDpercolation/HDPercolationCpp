@@ -38,8 +38,6 @@
 *.opendb
 
 #VS
-.suo
 *.suo
-Percolation/.vs/Percolation/v14/.suo
-Percolation/.vs/Percolation/v14/.suo
-*.suo
+*/.vs/Percolation/v14/.suo
+*.vspx
