@@ -1,4 +1,4 @@
-# HDPercolationCpp
+# High Dimension Percolation in C++ - Run All Points
 
 [![CC BY-NC-ND](https://raw.githubusercontent.com/HDpercolation/HDPercolationCpp/master/images/BYNCND.png)](http://creativecommons.org/licenses/by-nc-nd/4.0/)
 
