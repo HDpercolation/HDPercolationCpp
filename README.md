@@ -1,6 +1,14 @@
 # High Dimension Percolation in C++
 
+用以对特定概率处（通常是在阈值处）的缠绕多圈的情形进行分析。
 
+用法是
+
+```
+>> cd path
+>> Percolation.exe AP d m p n (seed)
+```
+其中`d`是维度，`m`是边长，`p`是概率，`n`是计算次数，`(seed)`是可选项，为随机数种子。
 
 -----------
 
