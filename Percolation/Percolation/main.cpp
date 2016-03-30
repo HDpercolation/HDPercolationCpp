@@ -4,16 +4,13 @@
  * 命令行格式：==============================================
  * 用以探测缠绕多圈的情况
  *      类型标识：
- *          * AP    在一个P概率附近，测试绕多圈的概率（平均）
- *          * APU   在一个P概率附近，测试绕多圈的概率（大于1的数在缠绕总数中的比例）
+ *          * AP    在一个P概率附近，测试绕多圈的概率（平均+加权）
  *      格式：
  *          * >> Percolation.exe AP d m p n (seed)
- *          * >> Percolation.exe APU d m p n (seed)
  *          其中的(seed)，表示随机种子，若提供，则使用seed，
  *          否则使用内部种子（时间）。
  *      例子：
  *          >> Percolation.exe AP 2 10 0.5 10000 23342
- *          >> Percolation.exe APU 7 5 0.12 10
  * ========================================================
  */
 
@@ -91,7 +88,7 @@ void warpping_data(int d, int m, double p){
     return;
 }
 
-void run_for_n_times(int d, int m, double p, long n){
+void get_AP(int d, int m, double p, long n){
 	_node_x		O_node(d);
 	_Graph_x	g(O_node, d, m, p);
 
@@ -99,52 +96,24 @@ void run_for_n_times(int d, int m, double p, long n){
 	ColorCount::assignColors();
 
 	WrappingCount::counters r_n;
-	ColorCount::color_list_t colorData;
+	//ColorCount::color_list_t colorData;
 
 	makeMap(&g, d, m, p);
 	BFS(&g);
 
 	r_n = WrappingCount::getCounter();
-	colorData = ColorCount::getColor();
-
-	//输出wrapping信息
-	{
-		for (int k = 0; k < r_n.size() - 1; ++k)
-		{
-			cout << r_n[k] << ",";
-		}
-		cout << r_n[r_n.size() - 1] << endl;
-	}
-
-	//输出色彩信息
-	{
-		for (int j = 0; j < colorData.size() - 1; ++j)
-		{
-			cout << colorData[j] << ",";
-		}
-		cout << colorData[colorData.size() - 1] << endl;
-	}
 
 
 	for (long i = 0; i < n - 1; ++i) {
 		reMakeMap(&g, d, m, p);
 		BFS(&g);
-
-		r_n = WrappingCount::getCounter();
-		colorData = ColorCount::getColor();
-
-		for (int k = 0; k < r_n.size() - 1; ++k)
-		{
-			cout << r_n[k] << ",";
-		}
-		cout << r_n[r_n.size() - 1] << endl;
-
-		for (int j = 0; j < colorData.size() - 1; ++j)
-		{
-			cout << colorData[j] << ",";
-		}
-		cout << colorData[colorData.size() - 1] << endl;
 	}
+	
+
+	//r_n = WrappingCount::getCounter();
+	cout << "Have wrapping:," << WrappingCount::one << endl;
+	cout << "Have higher wrapping:," << WrappingCount::more_than_one << endl;
+	cout << "Have higher wrapping(weighted):," << WrappingCount::more_than_one_total << endl;
 
     return;
 }
@@ -159,10 +128,11 @@ int main(int argc, char *argv[]) {
 	auto		seed_bool = false;
 
 	//用以性能测试的部分：
-	//warpping_data(8, 8, 0.08);
+	//get_AP(2, 20, 0.5, 5000);
+	//cin >> d;
 	//return 0;
 
-    if (argc < 5){
+    if (argc < 6){
         cout << "Format error." << endl;
         //return -1;
 		return 0;
@@ -170,7 +140,7 @@ int main(int argc, char *argv[]) {
         types = argv[1];
             // 读取控制符
 
-        if (types == "RN"){
+        if (types == "AP"){
             if (argc < 6){
                 cout << "Format error." << endl;
                 return 0;
@@ -182,33 +152,11 @@ int main(int argc, char *argv[]) {
             if (argc == 7){
                 seed_bool = true;
                 seed = atol(argv[6]);
+				random_MTE.seed(seed);
 				randomer.setSeed(seed);
             }
-            run_for_n_times(d, m, p, n);
-        } else
-            if (types == "RD"){
-                d = atoi(argv[2]);
-                m = atoi(argv[3]);
-                p = atof(argv[4]);
-                if (argc == 6){
-                    seed_bool = true;
-                    seed = atol(argv[5]);
-					randomer.setSeed(seed);
-					random_MTE.seed(seed);
-                }
-                warpping_data(d, m, p);
-            } else
-                if (types == "C"){
-                    d = atoi(argv[2]);
-                    m = atoi(argv[3]);
-                    p = atof(argv[4]);
-                    if (argc == 6){
-                        seed_bool = true;
-                        seed = atol(argv[5]);
-						randomer.setSeed(seed);
-                    }
-                    get_colors(d, m, p);
-                }
+			get_AP(d, m, p, n);
+        }
     }
 
     return 0;
