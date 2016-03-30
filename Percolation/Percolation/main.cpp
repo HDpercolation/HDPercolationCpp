@@ -2,21 +2,18 @@
  * :::::::::::::::::::: Percolation :::::::::::::::::::::::
  * ========================================================
  * 命令行格式：==============================================
- * TODO 此部分尚未完成
+ * 用以探测缠绕多圈的情况
  *      类型标识：
- *          * RN    返回N次迭代中的环绕次数
- *          * RD    返回一次迭代中的环绕数据
- *          * C     返回染色数据
+ *          * AP    在一个P概率附近，测试绕多圈的概率（平均）
+ *          * APU   在一个P概率附近，测试绕多圈的概率（大于1的数在缠绕总数中的比例）
  *      格式：
- *          * >> Percolation.exe RN d m p n (seed)
- *          * >> Percolation.exe RD d m p (seed)
- *          * >> Percolation.exe C d m p (seed)
+ *          * >> Percolation.exe AP d m p n (seed)
+ *          * >> Percolation.exe APU d m p n (seed)
  *          其中的(seed)，表示随机种子，若提供，则使用seed，
  *          否则使用内部种子（时间）。
  *      例子：
- *          >> Percolation.exe RN 2 10 0.5 50 23342
- *          >> Percolation.exe RD 7 5 0.12
- *          >> Percolation.exe C 5 6 0.15 3455
+ *          >> Percolation.exe AP 2 10 0.5 10000 23342
+ *          >> Percolation.exe APU 7 5 0.12 10
  * ========================================================
  */
 
