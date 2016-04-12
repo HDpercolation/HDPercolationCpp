@@ -21,13 +21,10 @@
  */
 
 #include <iostream>
-//#include "basic/randomGirdGraph.h"
-#include "basic/SowReap.h"
 #include "PercolationClass.h"
 
 
 using namespace std;
-//using namespace BondPercolation;
 
 
 /*

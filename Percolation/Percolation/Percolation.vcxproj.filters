@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="头文件\PercolationClass">
+      <UniqueIdentifier>{3594eb51-4083-4fb2-9255-767164947949}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -20,38 +23,23 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ColorCount.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Types.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="wrappingCount.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="basic\randomAutomata.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="basic\randomGirdGraph.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="basic\randomGirdGraph-inl.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="basic\SowReap.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="PercolationClass.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="PercolationClass_function.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="PercolationClass_SowReap.h">
-      <Filter>头文件</Filter>
+      <Filter>头文件\PercolationClass</Filter>
     </ClInclude>
     <ClInclude Include="PercolationClass_counter.h">
-      <Filter>头文件</Filter>
+      <Filter>头文件\PercolationClass</Filter>
+    </ClInclude>
+    <ClInclude Include="PercolationClass_function.h">
+      <Filter>头文件\PercolationClass</Filter>
+    </ClInclude>
+    <ClInclude Include="PercolationClass_SowReap.h">
+      <Filter>头文件\PercolationClass</Filter>
+    </ClInclude>
+    <ClInclude Include="PercolationClass_Colors.h">
+      <Filter>头文件\PercolationClass</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

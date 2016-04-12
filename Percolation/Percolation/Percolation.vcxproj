@@ -113,17 +113,12 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="basic\randomAutomata.h" />
-    <ClInclude Include="basic\randomGirdGraph-inl.h" />
-    <ClInclude Include="basic\randomGirdGraph.h" />
-    <ClInclude Include="basic\SowReap.h" />
-    <ClInclude Include="ColorCount.h" />
     <ClInclude Include="PercolationClass.h" />
+    <ClInclude Include="PercolationClass_Colors.h" />
     <ClInclude Include="PercolationClass_counter.h" />
     <ClInclude Include="PercolationClass_function.h" />
     <ClInclude Include="PercolationClass_SowReap.h" />
     <ClInclude Include="Types.h" />
-    <ClInclude Include="wrappingCount.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
