@@ -4,6 +4,7 @@
 
 #include <vector>
 #include "basic/randomGirdGraph-inl.h"
+#include "basic/randomGirdGraph.h"
 
 #define POWER			long_pow2
 
@@ -11,6 +12,10 @@ typedef int32_t g_size_t;
 typedef int32_t my_long_t;
 typedef int16_t my_int_t;
 typedef std::vector<g_size_t> _move;
+typedef bool _link;
+
+typedef std::vector<_link> _links;
+typedef std::vector<int> _position;
 
 struct _node_x {
 	// ½Úµã

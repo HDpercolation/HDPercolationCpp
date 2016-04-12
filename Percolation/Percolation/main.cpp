@@ -21,14 +21,16 @@
  */
 
 #include <iostream>
-#include "basic/randomGirdGraph.h"
+//#include "basic/randomGirdGraph.h"
 #include "basic/SowReap.h"
+#include "PercolationClass.h"
 
 
 using namespace std;
-using namespace BondPercolation;
+//using namespace BondPercolation;
 
 
+/*
 void get_colors(const int d, const int m, double p){
     //GRAPH g;
 	WrappingCount::assignCounter(d, m);
@@ -53,6 +55,7 @@ void get_colors(const int d, const int m, double p){
     return;
 }
 
+
 void warpping_data(int d, int m, double p){
 	_node_x		O_node(d);
 	_Graph_x	g(O_node, d, m, p);
@@ -64,7 +67,7 @@ void warpping_data(int d, int m, double p){
 
     BFS(&g);
 
-	/*参见SowReap.h*/
+	//参见SowReap.h
     SOW_GET_01;
     SOW_GET_02;
 
@@ -151,6 +154,7 @@ void run_for_n_times(int d, int m, double p, long n){
 
     return;
 }
+*/
 
 int main(int argc, char *argv[]) {
 
@@ -165,6 +169,20 @@ int main(int argc, char *argv[]) {
 	//warpping_data(8, 8, 0.08);
 	//return 0;
 
+	// Input
+	cin >> d;
+	cin >> m;
+	cin >> p;
+
+	PercolationMap test_map(d, m, p);
+
+	test_map.make();
+
+	cout << "Build success!" << endl;
+
+	cout << "The dim = " << test_map.dim() << endl;
+
+	/*
     if (argc < 5){
         cout << "Format error." << endl;
         //return -1;
@@ -213,6 +231,9 @@ int main(int argc, char *argv[]) {
                     get_colors(d, m, p);
                 }
     }
+	*/
+
+	cin >> d;
 
     return 0;
 }

@@ -41,5 +41,17 @@
     <ClInclude Include="basic\SowReap.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="PercolationClass.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="PercolationClass_function.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="PercolationClass_SowReap.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="PercolationClass_counter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

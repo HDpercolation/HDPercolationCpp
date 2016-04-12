@@ -21,6 +21,8 @@
 #ifndef PERCOLATION_RANDOMGIRDGRAPH_H
 #define PERCOLATION_RANDOMGIRDGRAPH_H
 
+#ifndef PERCOLATION_RANDOMGIRDGRAPH_H
+
 #include <vector>
 #include <array>
 #include <cmath>
@@ -40,7 +42,7 @@
 //用以优化的新函数=====================
 #define GRAPH			_Graph_x
 #define POWER			long_pow2
-#define GET_INDEX		get_index2
+#define GET_INDEX		get_index2x
 #define LINKED_INDEX	linked_index2
 #define MAP				_map
 #define NODE			_node_2
@@ -115,8 +117,8 @@ namespace BondPercolation {
 	Template long linked_index2(GRAPH *, long, int);
 
 	Template long get_index(GRAPH *, _position *);// 获得点编号
-	Template long get_index2(GRAPH *, _position *);// 获得点编号
-	Template inline long get_linked_index(GRAPH *, _position *, int); // 获得连边的编号
+	Template long get_index2x(GRAPH *, _position *);// 获得点编号
+	Template inline long get_linked_indexxx(GRAPH *, _position *, int); // 获得连边的编号
 
 	// 构造函数 ===================================================================
 	/* 主函数：     makeMap
@@ -130,7 +132,7 @@ namespace BondPercolation {
 	int reMakeMap(GRAPH *, unsigned int, unsigned int, double);
 	Template int inital_set_bond(GRAPH *, unsigned int, unsigned int, double);
 	// 随机设置连边
-	void get_position_q(long, long, long, _position *);
+	void get_position_qx(long, long, long, _position *);
 	// 获得坐标
 	Template inline int putLink(GRAPH *, long, int, double);// 放置无向边
 	inline int putLink_p(GRAPH *, std::vector<_node_x>::iterator, std::size_t, int, double);
@@ -204,7 +206,7 @@ namespace BondPercolation {
 		return count_link;
 	}
 
-	void get_position_q(long index, long d, long m, _position *p) {
+	void get_position_qx(long index, long d, long m, _position *p) {
 		auto $index = index;
 		int k = d - 1;
 
@@ -259,7 +261,7 @@ namespace BondPercolation {
 	}
 
 	Template
-	inline long get_linked_index(GRAPH *g, _position *p, int link) {
+	inline long get_linked_indexxx(GRAPH *g, _position *p, int link) {
 		(*p)[link] = ((*p)[link] + 1) % (g->m);
 		return GET_INDEX(g, p);
 	}
@@ -468,7 +470,7 @@ namespace BondPercolation {
 	}
 
 	Template
-	long get_index2(GRAPH *g, _position *p) {
+	long get_index2x(GRAPH *g, _position *p) {
 		long temp = (*p)[0];
 		long m = g->m;
 		int size = (*p).size();
@@ -482,5 +484,7 @@ namespace BondPercolation {
 		return temp;
 	}
 }
+
+#endif
 
 #endif //PERCOLATION_RANDOMGIRDGRAPH_H
