@@ -178,7 +178,17 @@ int main(int argc, char *argv[]) {
 
 	test_map.make();
 
+	test_map.BFS();
+
+	std::vector<int> data = test_map.warppingCounterData();
+
 	cout << "Build success!" << endl;
+
+	for (int i = 0; i < data.size(); ++i)
+	{
+		cout << data[i] << "  ";
+	}
+	cout << endl;
 
 	cout << "The dim = " << test_map.dim() << endl;
 
