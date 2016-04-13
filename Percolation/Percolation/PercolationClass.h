@@ -40,6 +40,7 @@ public:
 
 	// Results
 	std::vector<int> warppingCounterData(void);
+	bool warppingQ(void);	// Get `true` if there is any warpping in the graph.
 
 private:
 	_Graph_x gird_map;
@@ -49,14 +50,14 @@ private:
 	double p;
 
 	// Count data
-	_datas data;	// Sow-Reap
+	_datas data;	// Sow-Reap, we not use it now
 	counter warpping_counter;
 	colorCounter colors;
 
 	// random
 	std::mt19937 random_MTE;
 
-	// inside functions
+	// inside functions ===============================================
 	int reMakeMap(GRAPH *, unsigned int, unsigned int, double);
 	int inital_set_bond(GRAPH *, unsigned int, unsigned int, double);
 
@@ -107,12 +108,14 @@ int PercolationMap::reMakeMap(GRAPH *g, unsigned int $d, unsigned int $m, double
 
 void PercolationMap::make(void)
 {
-	inital_set_bond(&gird_map, d, m, p);
+	//inital_set_bond(&gird_map, d, m, p);
+	reMake(p);
 }
 
 void PercolationMap::reMake(double $p)
 {
 	this->p = $p;
+	data.clear();
 	warpping_counter.assignCounter(d, m);
 	colors.assignColors();
 
@@ -309,5 +312,20 @@ std::vector<int> PercolationMap::warppingCounterData(void)
 {
 	return (this->warpping_counter).getCounter();
 }
+
+inline bool PercolationMap::warppingQ(void)
+{
+	auto temp = warpping_counter.getCounter();
+	auto len = temp.size();
+
+	for (auto i = 0; i < len; ++i)
+	{
+		if (temp[i] > 0)
+			return true;
+	}
+
+	return false;
+}
+
 
 #endif
